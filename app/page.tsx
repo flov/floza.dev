@@ -1,4 +1,5 @@
 import { ExperienceList } from "@/app/components/experience-list";
+import { GitHubProfileSummary } from "@/app/components/github-profile-summary";
 import { Hero } from "@/app/components/hero";
 import { ProjectList } from "@/app/components/project-card";
 import { Section } from "@/app/components/section";
@@ -53,6 +54,7 @@ export default function Home() {
               </div>
             ))}
           </dl>
+          <GitHubProfileSummary />
         </Section>
         <Section id="experience" title="Experience">
           <ExperienceList />

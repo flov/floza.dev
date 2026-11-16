@@ -8,6 +8,8 @@ export const profile = {
   bio: "I build web and mobile products end to end, from Next.js and Rails systems to React Native apps used in the field. Recent work includes a festival app for thousands of attendees, GDPR and DSA work at New Work, and two community products I founded and still maintain.",
   cvHref: "/Florian_Vallen_CV.pdf",
   image: "/profile.jpg",
+  githubSummaryCard:
+    "https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=flov&theme=tokyonight",
 };
 
 export const links = [
