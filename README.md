@@ -1,36 +1,61 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# [floza.dev](https://floza.dev)
 
-## Getting Started
+Personal site and portfolio for **Florian Vallen** — software engineer based in Leipzig. Single-page layout with bio, skills, experience, selected projects, and contact links. Built to be fast, accessible, and easy to update from one content file.
 
-First, run the development server:
+## Tech stack
+
+- [Next.js](https://nextjs.org) 16 (App Router)
+- [React](https://react.dev) 19
+- [TypeScript](https://www.typescriptlang.org)
+- [Tailwind CSS](https://tailwindcss.com) 4 (Turbopack integration)
+
+## Getting started
+
+**Requirements:** Node.js 20+ and npm.
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000). The dev server uses Turbopack.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Command        | Description              |
+| -------------- | ------------------------ |
+| `npm run dev`  | Development server       |
+| `npm run build`| Production build         |
+| `npm run start`| Serve production build   |
+| `npm run lint` | ESLint (Next.js config)  |
 
-## Learn More
+## Project layout
 
-To learn more about Next.js, take a look at the following resources:
+```
+app/
+  components/     # UI sections (hero, experience, projects, …)
+  globals.css     # Global styles and Tailwind theme
+  layout.tsx      # Metadata, fonts (Geist)
+  page.tsx        # Home page composition
+lib/
+  site-content.ts # Profile, skills, experience, projects, nav
+public/           # Static assets (CV PDF, images)
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Most copy and links live in **`lib/site-content.ts`**. Edit that file to change the hero, about text, résumé entries, project cards, or in-page navigation — no need to hunt through components unless you change layout or styling.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Components read from that module and stay presentational: `Hero`, `ExperienceList`, `ProjectList`, `SocialLinks`, etc. on `app/page.tsx`.
 
-## Deploy on Vercel
+## Content notes
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **CV:** `public/Florian_Vallen_CV.pdf` — linked via `profile.cvHref` in site content.
+- **Profile image:** `public/profile.jpg` — used in metadata / Open Graph (`app/layout.tsx`).
+- **Project images:** under `public/projects/` where referenced in `projects` entries.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Deployment
+
+The site is configured for [floza.dev](https://floza.dev) (`metadataBase` in `app/layout.tsx`). A standard Next.js deploy (e.g. [Vercel](https://vercel.com)) works: connect the repo, use `npm run build`, and set the production domain.
+
+## License
+
+Private project (`package.json`). The live site content is personal; the codebase is not published as open source unless stated otherwise.
